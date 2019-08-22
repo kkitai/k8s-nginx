@@ -1,0 +1,29 @@
+---
+resources:
+#- name: node_app_img_dh
+#  type: image
+#  integration: drship_dockerhub
+#  versionTemplate:
+#    sourceName: "devopsrecipes/node_app"
+#    isPull: false
+#    versionName: latest
+
+- name: config_repo
+  type: gitRepo
+  integration: "github"
+  versionTemplate:
+    sourceName: "kkitai/k8s-nginx"
+    branch: master
+
+#- name: gcp_cli
+#  type: cliConfig
+#  integration: "dr_gcp"
+#  versionTemplate:
+#    region: "us-west1-a"
+
+- name: gke_cluster
+  type: cluster
+  integration: "GKE"
+  pointer:
+    sourceName: "nginx-1-cluster"
+    region: "us-central1-a"
