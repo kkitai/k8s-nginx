@@ -4,7 +4,7 @@ resources:
   type: gitRepo
   integration: github
   versionTemplate:
-    sourceName: kkitai/k8s_nginx
+    sourceName: kkitai/k8s-nginx
 - name: cd_docker_platform_cluster
   type: cluster
   integration: "GKE"
