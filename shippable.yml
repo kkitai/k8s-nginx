@@ -1,11 +1,10 @@
 ---
 resources:
-- name: cd_docker_platform_image
-  type: image
+- name: repo_k8s_nginx
+  type: gitRepo
+  integration: github
   versionTemplate:
-    sourceName: "nginx" # replace with your fully qualified image URL
-    isPull: false
-    versionName: "master.10"
+    sourceName: kkitai/k8s_nginx
 - name: cd_docker_platform_cluster
   type: cluster
   integration: "GKE"
@@ -14,15 +13,10 @@ resources:
     region: "us-central1-a"
 
 jobs:
-- name: cd_docker_platform_manifest
-  type: manifest
-  steps:
-  - IN: cd_docker_platform_image
-
 - name: cd_docker_platform_deploy
   type: deploy
   steps:
-  - IN: cd_docker_platform_manifest
+  - IN: repo_k8s_nginx
   - IN: cd_docker_platform_cluster
   - TASK: managed
     deployMethod: replace
