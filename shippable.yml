@@ -15,6 +15,7 @@ resources:
 jobs:
 - name: cd_docker_platform_deploy
   type: deploy
+  method: blueGreen
   steps:
   - IN: repo_k8s_nginx
   - IN: cd_docker_platform_cluster
